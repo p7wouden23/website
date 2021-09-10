@@ -1,0 +1,97 @@
+<html>
+<head>
+<script language="javaScript">
+function greeting()
+{
+alert("hello");
+}
+
+function guessing()
+{
+	/* block comment
+	1. we need a prompt button to ask the user to type a number between 1 and 10
+	2. Write an alert that says correct if the guess is correct
+	3. When the user puts in a number we need a function that will see if the guessed number is too high or too low. 
+	4. set usersG.
+	uess to -1
+	5. create a while loop
+		while (rand != usersGuess) 
+	6. inside while, 
+		increase number of guesses
+		prompt the user to put in a new guess
+		if statement to tell user if guess is too high
+	7. after the while, alert they are correct and how many guesses it took. 
+	*/
+	
+	
+	var usersGuess = -1;
+	var numOfGuesses = 0;
+	var rand = Math.random()*15 + 1;
+	rand = parseInt(rand);
+
+	while ( rand != usersGuess)
+	{
+		usersGuess = prompt("Enter a number between 1-10");
+		numOfGuesses = numOfGuesses +1;
+			
+		if ( usersGuess < rand )
+		{ 
+			alert ("Your guess is too low!");
+		}
+		
+		else if ( usersGuess > rand )
+		{ 
+			alert ("Your guess is too high!");
+		}
+		
+	}
+	
+	if ( usersGuess == rand )
+	{
+		alert ("Yay, you guessed correctly in "+numOfGuesses+" guesses!");
+	}
+}
+
+function greeting2()
+{
+	var response = prompt("Type your name!"); 
+	alert("well hello,"+response);
+}
+
+function greeting4()
+{
+	var name = confirm("Do you like my site?"); 
+	alert(name);
+}
+
+function greeting3()
+{
+alert("A dubious friend may be an enemy in camouflage.");
+}
+
+</script>
+</head>
+
+<body bgcolor="#fbc4e2">
+
+<font color="#d60185" face="Lucida Bright">
+<h1> My First JavaScript Page!!! </h1>
+
+<br>
+<a href="index.html" style="color:#f72dab"> Back to index page. </a> 
+<br> 
+
+<br>
+<input type="button" value="Click for a message" onclick="greeting()"/>
+<br>
+<hr/>
+<input type="button" value="Click for my game!" onclick="guessing()"/>
+<hr/>
+
+<input type="button" value="What is your name?" onclick="greeting2()"/>
+
+<hr/>
+
+<input type="button" value="Click for a fortune" onclick="greeting3()"/>
+</body>
+</html>
