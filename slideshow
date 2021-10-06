@@ -1,0 +1,102 @@
+<html>
+<head>
+<script language = "javaScript">
+var counter = 0;
+var piclist = ["images/slideshow/slideshow1.jpg", 
+				"images/slideshow/slideshow2.jpg", 
+				"images/slideshow/slideshow3.jpg",
+				"images/slideshow/slideshow4.jpg", 
+				"images/slideshow/slideshow5.jpg",
+				"images/slideshow/slideshow6.jpg"]
+
+
+var cliplist = ["sounds/travissound.mp3",
+				"sounds/kyliesound.mp3", 
+				"sounds/stormisound.mp3", 
+				"sounds/kendallsound.mp3", 
+				"sounds/devinsound.mp3", 
+				"sounds/kendallandevin.mp3"]
+				
+var timer
+
+var autoStart = false
+
+function nextPic()
+{
+	document.getElementById("display").src = piclist[counter];
+	document.getElementById("player").src = cliplist[counter];
+	document.getElementById("player").play();
+	incrementCounter();
+}
+
+function incrementCounter()
+{
+	if ( counter == piclist.length-1 )
+	{
+		counter = 0;
+	}	
+	else
+	{
+		counter++;
+	}
+} 
+
+function run()
+{
+	if (autoStart == false)
+	{
+		autoStart = true;
+		document.getElementById("runButton").value = "Pause";
+	}
+	else
+	{
+		autoStart = false;
+		document.getElementById("runButton").value = "Run Slideshow";
+	}
+	
+	autoPlay();
+	
+	// player is like a record
+	// player.src is like putting a record on the turn table
+}
+
+function autoPlay()
+{
+	if (autoStart == true)
+	{
+		nextPic();
+		
+		timer = setTimeout("autoPlay()", 10000 );
+	}
+	else
+	{
+		clearTimeout(timer);
+	}
+}
+
+</script>
+
+</head>
+<body bgcolor="white">
+<font color="#EE139B" face="Lucida Bright">
+
+<center>
+<h1>  Welcome to my Slide Show! </h1>
+
+Click here to <a href="index.html" style="color:blue"> return to my home page. <a/>
+
+<br/><br/>
+
+<input type="button" value = "Next Picture" onclick="nextPic()">
+<input type="button" value = "Run Slideshow" onclick="run()" id="runButton">
+
+<br/><br/>
+
+<img src="images/slideshow/slideshow1.jpg" id="display"  />
+
+<audio id="player"> <audio/>
+
+</center>
+
+</body>
+</html>
